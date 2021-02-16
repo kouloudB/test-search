@@ -1,0 +1,18 @@
+{
+    "short_name": "SOE App",
+    "name": "SOE PWA",
+    "start_url": ".",
+    "display": "standalone",
+    "theme_color": "#000000",
+    "background_color": "#ffffff",
+    "icons": [
+        {
+          "src": "/images/chrome192x192.jpg",
+          "sizes": "192x192"
+        },
+        {
+          "src": "/images/chrome512x512.png",
+          "sizes": "512x512"
+        }
+      ]
+}
