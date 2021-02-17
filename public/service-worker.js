@@ -19,13 +19,13 @@ if (workbox) {
   
   workbox.routing.registerRoute(
     new RegExp('/|/home|/images'),
-    new workbox.strategies.StaleWhileRevalidate({
+     workbox.strategies.staleWhileRevalidate({
       cacheName: 'pages-cache' 
    })
   ); 
   workbox.routing.registerRoute(
     /\.(?:png|jpg|jpeg|gif|bmp|webp|svg|ico)$/,
-    new workbox.strategies.CacheFirst({
+     workbox.strategies.cacheFirst({
         "cacheName": "images",
         plugins: [
             new workbox.expiration.Plugin({
@@ -35,11 +35,12 @@ if (workbox) {
         ]
     })
 );
-
+const url ='https://api.fda.gov/food/(.*)'
+const url2 = "https://motulvmo0ewtgpd9e.vms.hana.ondemand.com/dev/form/AccountSelection"
 
   workbox.routing.registerRoute(
-    new RegExp("https://motulvmo0ewtgpd9e.vms.hana.ondemand.com/dev/form/AccountSelection"),
-    new workbox.strategies.NetworkFirst({
+    new RegExp(url2),
+     workbox.strategies.networkFirst({
       cacheName: 'accounts-cache' 
    })
   ); 
