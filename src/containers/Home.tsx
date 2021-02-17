@@ -51,7 +51,7 @@ function Home() {
        
   }
   useEffect(()=>{
-    dispatch(getAccounts(url))
+    dispatch(getAccounts(url2))
     
   }, [])
  
