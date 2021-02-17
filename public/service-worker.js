@@ -39,7 +39,7 @@ const url ='https://api.fda.gov/food/(.*)'
 const url2 = "https://motulvmo0ewtgpd9e.vms.hana.ondemand.com/dev/form/AccountSelection"
 
   workbox.routing.registerRoute(
-    new RegExp(url),
+    new RegExp(url2),
     new workbox.strategies.NetworkFirst({
       cacheName: 'accounts-cache' 
    })
