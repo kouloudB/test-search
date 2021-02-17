@@ -1,10 +1,19 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
 function Login() {
 
   const history = useHistory();
-
+useEffect( ()=> {
+    (async function anyNameFunction() {
+      const cache = await caches.open('accounts-cache');
+      cache.add('/cats.json') 
+      cache.put('/cats.json', new Response('{"james": "kitten", "daniel": "kitten"}'))
+      const response = await cache.match('/cats.json');
+console.log("cache===>", response)
+    })();
+   
+  }, [])
   const handleLogin= ()=>{
     history.push('/home')
     
