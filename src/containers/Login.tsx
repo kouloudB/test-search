@@ -11,10 +11,10 @@ useEffect( ()=> {
       cache.put('/cats.json', new Response('{"james": "kitten", "daniel": "kitten"}'))
       const response = await cache.match('/cats.json');
       console.log("cache===>", response)
-      setCats(response? response.toString() : 'fail')
+      setCats(response? response?.toString() : 'fail')
       const respo = await cache.match('accounts-cache');
       console.log("cache===>", respo)
-      setCat(respo? respo.toString() : 'fail respo')
+      setCat(respo? respo?.toString() : 'fail respo')
     })();
    
   }, [])
