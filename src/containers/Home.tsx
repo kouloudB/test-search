@@ -18,7 +18,7 @@ function Home() {
   const handleAccountsSearch = async (event : React.ChangeEvent<HTMLInputElement>)=>{
     if(isConnected){
       const cache = await caches.open('accounts-cache');
-      cache.match(url2)
+      cache.match(url)
       .then(response=>{ 
         setConsCach(response==undefined? 'undefined': 'online data'+response?.toString())
          return response?.json()
@@ -33,7 +33,7 @@ function Home() {
       console.log('>>> from API')
     }else{
       const cache = await caches.open('accounts-cache');
-      cache.match(url2)
+      cache.match(url)
       .then(response=>{ 
         setConsCach(response==undefined? 'undefined': 'offline data'+response?.toString())
          return response?.json()
@@ -51,7 +51,7 @@ function Home() {
        
   }
   useEffect(()=>{
-    dispatch(getAccounts(url2))
+    dispatch(getAccounts(url))
     
   }, [])
  
@@ -60,11 +60,11 @@ function Home() {
       <p>{isConnected? "online": "offline"}</p>
       <p>{"consCach  "+consCach}</p>
       <input type="text" onChange={handleAccountsSearch} />
-        {/* <ul>
+        <ul>
           {accounts.map(({city}, i)=> 
             <li key={i}>{city}</li>
           )}
-        </ul> */}
+        </ul> 
     </div>
   );
 }
