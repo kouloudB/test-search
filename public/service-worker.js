@@ -19,33 +19,54 @@ if (workbox) {
   
   workbox.routing.registerRoute(
     new RegExp('/|/home|/images'),
-     workbox.strategies.staleWhileRevalidate({
+    new workbox.strategies.StaleWhileRevalidate({
       cacheName: 'pages-cache' 
    })
   ); 
-  workbox.routing.registerRoute(
-    /\.(?:png|jpg|jpeg|gif|bmp|webp|svg|ico)$/,
-     workbox.strategies.cacheFirst({
-        "cacheName": "images",
-        plugins: [
-            new workbox.expiration.Plugin({
-                maxEntries: 1000,
-                maxAgeSeconds: 31536000
-            })
-        ]
-    })
-);
+//   workbox.routing.registerRoute(
+//     /\.(?:png|jpg|jpeg|gif|bmp|webp|svg|ico)$/,
+//     new workbox.strategies.CacheFirst({
+//         "cacheName": "images",
+//         plugins: [
+//             new workbox.expiration.Plugin({
+//                 maxEntries: 1000,
+//                 maxAgeSeconds: 31536000
+//             })
+//         ]
+//     })
+// );
 const url ='https://api.fda.gov/food/(.*)'
 const url2 = "https://motulvmo0ewtgpd9e.vms.hana.ondemand.com/dev/form/AccountSelection"
 
   workbox.routing.registerRoute(
     new RegExp(url2),
-     workbox.strategies.networkFirst({
+    new workbox.strategies.NetworkFirst({
       cacheName: 'accounts-cache' 
    })
   ); 
-  
- 
+
+  // self.addEventListener('fetch', event => {
+  //   if(event.request.method === "GET" ) {
+  //     event.respondWith(
+  //       fetch(event.request).then(()=> console.log('success GET')).catch(err => {
+  //         return new Response(
+  //           JSON.stringify({ error: "This action disabled while app is offline" }), {
+  //             headers: { 'Content-Type': 'application/json' }
+  //           }
+  //         )
+  //       })
+  //     )
+  //   }
+  // })
+//   const {strategies} = workbox;
+
+//  self.addEventListener('fetch', (event) => {
+//   if (event.request.url== url2) {
+//     // Using the previously-initialized strategies will work as expected.
+//     const cacheFirst = new strategies.CacheFirst();
+//     event.respondWith(cacheFirst.handle({request: event.request}));
+//   }
+// });
 
 }else {
   console.log(`Boo! Workbox didn't load 😬`);
